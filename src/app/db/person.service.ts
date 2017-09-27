@@ -10,14 +10,16 @@ export class PersonService {
 	baseUrl: string = "https://mwa-person-api.herokuapp.com/";
 	constructor(private http: Http, private authHttp: AuthHttp) { }
 
-	getPerson(){
-         return this.authHttp.get("https://mwa-person-api.herokuapp.com/api/persons");
+	getPersons(){
+         return this.authHttp.get(this.baseUrl +"api/persons").map(res=> res.json());
 	}
+	
 	getDoctors(){
 		return this.authHttp.get(this.baseUrl +"api/persons/doctors").map(res=> res.json());
-   }
-   getOwners(){
-	return this.authHttp.get(this.baseUrl +"api/persons/owners").map(res=> res.json());
-}
+    }
+    
+    getOwners(){
+	    return this.authHttp.get(this.baseUrl +"api/persons/owners").map(res=> res.json());
+    }
 
 }
