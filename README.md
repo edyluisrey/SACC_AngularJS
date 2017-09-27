@@ -37,17 +37,21 @@ Edy Aguirre
 # OVERVIEW
 The Veterinary Clinic System called SACC (Specialized animal care center) it is a veterinary care for domestic animals. Since its inception a paper-based system has been used by the owner. However with it’s growing demands it is necessary for a computerized system to be used in order to keep tracks of the pets as well as their medical history.
 # GOALS
-<div>The system need to have the principal data information for the Animal.</div>
-The system need to be able to create different type of species of animals and breed.
-The system need to have the principal data information for the Owner.
-The system need to have the principal data information for the Doctors.
-The system need to have multiple contact location for the animal’s owner and Doctors.
-The system need to have multiple contact phone for the animal’s owner and Doctors.
-The system need to have multiple contact email for the animal’s owner and Doctors.
-The system need to be able to associate a microchip with the Animal.
-The system need to have the record of the animal’s vaccines.
-The system need to have the record of the animal’s deworming.
+<lu>
+<li>The system need to have the principal data information for the Animal.</li>
+<li>The system need to be able to create different type of species of animals and breed.</li>
+<li>The system need to have the principal data information for the Owner.</li>
+<li>The system need to have the principal data information for the Doctors.</li>
+<li>he system need to have multiple contact location for the animal’s owner and Doctors.</li>
+<li>The system need to have multiple contact phone for the animal’s owner and Doctors.</li>
+<li>The system need to have multiple contact email for the animal’s owner and Doctors.</li>
+<li>The system need to be able to associate a microchip with the Animal.</li>
+<li>The system need to have the record of the animal’s vaccines.</li>
+<li>The system need to have the record of the animal’s deworming.</li>
+</lu>
+
 # SPECIFICATIONS
+
 Using Angular/NodeJS/Express/MongoDB programming languages with object oriented concepts a new web system will be built
 The tools that we will use:
 Angular (FrontEnd)
