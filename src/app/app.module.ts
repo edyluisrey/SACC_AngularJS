@@ -24,6 +24,7 @@ import { Http, HttpModule, RequestOptions } from '@angular/http';
 import { AuthConfig, AuthHttp } from 'angular2-jwt';
 import { MiddleService } from './Mid.service';
 import { HomeComponent } from './home/home.component';
+import { MyDatePipe } from './my-date.pipe';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
@@ -39,7 +40,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     AnimalComponent,
     DewormComponent,
     CallbackComponent,
-    HomeComponent
+    HomeComponent,
+    MyDatePipe
   ],
   imports: [
     BrowserModule,
