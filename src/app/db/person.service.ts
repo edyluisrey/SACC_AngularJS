@@ -13,6 +13,22 @@ export class PersonService {
 	getPersons(){
          return this.authHttp.get(this.baseUrl +"api/persons").map(res=> res.json());
 	}
+    
+    createPerson(){
+         //return this.authHttp.get(this.baseUrl +"api/persons").map(res=> res.json());
+	}
+    
+    getPersonById(id:string){
+         return this.authHttp.get(this.baseUrl +"api/person/"+id).map(res=> res.json());
+	}
+
+	updatePerson(){
+         //return this.authHttp.get(this.baseUrl +"api/persons").map(res=> res.json());
+	}
+
+	deletePerson(){
+         //return this.authHttp.get(this.baseUrl +"api/persons").map(res=> res.json());
+	}
 	
 	getDoctors(){
 		return this.authHttp.get(this.baseUrl +"api/persons/doctors").map(res=> res.json());
@@ -21,5 +37,11 @@ export class PersonService {
     getOwners(){
 	    return this.authHttp.get(this.baseUrl +"api/persons/owners").map(res=> res.json());
     }
+
+    //Locations
+
+    //Phones
+
+    //Emails
 
 }
