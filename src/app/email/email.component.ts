@@ -26,7 +26,7 @@ export class EmailComponent implements OnInit {
   private email;
   myForm: FormGroup;
   private subscription: Subscription;
-  private person_name;
+  public person_name;
   private id: string;
   primary = ['Yes','No'];
   headerRow = ['Email','Primary','Options'];

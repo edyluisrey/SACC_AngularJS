@@ -33,7 +33,7 @@ export class VaccineComponent implements OnInit, OnDestroy {
   public listDoctors;
   private vaccine;
   private  message;
-  private animal_name;
+  public animal_name;
   myForm: FormGroup;
   private subscription: Subscription;
   private id: string;

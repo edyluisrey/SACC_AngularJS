@@ -25,7 +25,7 @@ export class PhoneComponent implements OnInit {
   private  message;
   private phone;
   myForm: FormGroup;
-  private person_name;
+  public person_name;
   private subscription: Subscription;
   private id: string;
   primary = ['Yes','No'];

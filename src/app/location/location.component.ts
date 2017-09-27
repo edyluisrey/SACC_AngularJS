@@ -25,7 +25,7 @@ export class LocationComponent implements OnInit, OnDestroy {
   private  message;
   private location;
   myForm: FormGroup;
-  private person_name;
+  public person_name;
   private subscription: Subscription;
   private id: string;
   primary = ['Yes','No'];
