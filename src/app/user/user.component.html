@@ -35,6 +35,7 @@
           <div class="row">
             <div class="col-md-4">
               <div class="form-group">
+                <input   type="hidden" class="form-control" id="_id" formControlName="_id"/>
                   <label for="pr_title">Title</label>
                 <select class="form-control" formControlName="pr_title" id="pr_title" name="pr_title">
                       <option *ngFor='let title of listTitle' [value]="title">{{title}}
@@ -130,8 +131,8 @@
                                       <td>{{row.pr_createdate| date:"MM/dd/yy"}}</td> 
                                       <td>{{row.pr_types}}</td> 
                                      <td>
-                                        <a [routerLink]="[user]">  <i class="pe-7s-pen"></i></a>
-                                        <a [routerLink]="[user]">  <i class="pe-7s-delete-user"></i> </a>
+                                        <a (click)="update(row._id)">  <i class="pe-7s-pen"></i></a>
+                                                <a (click)="delete(row._id)">  <i class="pe-7s-scissors"></i> </a>
                                       </td> 
                                 </tr> 
                               </tbody>
