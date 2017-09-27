@@ -39,6 +39,7 @@ Gloria Gallego
 Edy Aguirre
 </li>
 </lu>
+
 # OVERVIEW
 The Veterinary Clinic System called SACC (Specialized animal care center) it is a veterinary care for domestic animals. Since its inception a paper-based system has been used by the owner. However with it’s growing demands it is necessary for a computerized system to be used in order to keep tracks of the pets as well as their medical history.
 # GOALS
@@ -64,40 +65,40 @@ The Veterinary Clinic System called SACC (Specialized animal care center) it is 
 <li>MongoDB (Persistence)</li>
 <li>Github:
 <lu>
-<li>
+<ol>
 https://github.com/glomaga/SACC_AngularJS
-</li>
+</ol>
 </lu>
 </li>
 <li>GitHub Pages:
 <lu>
-<li>
+<ol>
 https://glomaga.github.io/SACC_AngularJS
-</li>
+</ol>
 </lu>
 </li>
 <li>Heroku : 
 <lu>
-<li>
+<ol>
 https://mwa-person-api.herokuapp.com/
-</li>
-<li>
+</ol>
+<ol>
 https://sacc-nodejs.herokuapp.com/
-</li>
+</ol>
 </lu>
 </li>
 <li>MLab: 
 <lu>
-<li>
+<ol>
 mongo ds147884.mlab.com:47884/mwa
-</li>
+</ol>
 </lu>
 </li>
 <li>JWT:
 <lu>
-<li>
+<ol>
 edyluisrey.auth0.com
-</li>
+</ol>
 </lu>
 </li>
 </lu>
