@@ -86,7 +86,7 @@ export class UserComponent implements OnInit {
             });
         }
         this.myForm.reset();
-        this.showNotification('top','center',5,this.message);
+        this.showNotification('top','center','success',this.message);
   }
   
   update(id){
@@ -122,6 +122,7 @@ export class UserComponent implements OnInit {
             console.log("delete:" + data);
             this.getInfoDb();
         });        
+        this.showNotification('top','center','warning',this.message);
   }
 
   getInfoDb(){
@@ -142,15 +143,14 @@ export class UserComponent implements OnInit {
     return null;
   }
 
-  showNotification(from, align,color,msg){
-        const type = ['','info','success','warning','danger'];
+  showNotification(from, align,type_info,msg){
+       // const type = ['','info','success','warning','danger'];
         console.log(msg);
-       // var color = col;//Math.floor((Math.random() * 4) + 1);
         $.notify({
             icon: "pe-7s-cloud-upload",
             message: msg
         },{
-            type: type[color],
+            type: type_info,
             timer: 1000,
             placement: {
                 from: from,
