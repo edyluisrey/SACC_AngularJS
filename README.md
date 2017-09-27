@@ -48,7 +48,7 @@ The Veterinary Clinic System called SACC (Specialized animal care center) it is 
 <li>The system need to be able to create different type of species of animals and breed.</li>
 <li>The system need to have the principal data information for the Owner.</li>
 <li>The system need to have the principal data information for the Doctors.</li>
-<li>he system need to have multiple contact location for the animal’s owner and Doctors.</li>
+<li>The system need to have multiple contact location for the animal’s owner and Doctors.</li>
 <li>The system need to have multiple contact phone for the animal’s owner and Doctors.</li>
 <li>The system need to have multiple contact email for the animal’s owner and Doctors.</li>
 <li>The system need to be able to associate a microchip with the Animal.</li>
