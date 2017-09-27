@@ -25,6 +25,7 @@ export class PhoneComponent implements OnInit {
   private  message;
   private phone;
   myForm: FormGroup;
+  private person_name;
   private subscription: Subscription;
   private id: string;
   primary = ['Yes','No'];
@@ -53,6 +54,7 @@ export class PhoneComponent implements OnInit {
 		  this.personService.getPersonById(this.id).subscribe(data => {
 		        console.log("get Phone data " ,data);
 		        this.listPhones= data.pr_phones;
+            this.person_name = data.pr_firstname + " "+ data.pr_lastname;
 		  });	
    }
   
@@ -85,7 +87,7 @@ export class PhoneComponent implements OnInit {
 		}
 
 		this.myForm.reset();
-		this.showNotification('top','center',5,this.message);
+		this.showNotification('top','center','success',this.message);
    }
    
    delete(id_phone){
@@ -101,7 +103,7 @@ export class PhoneComponent implements OnInit {
             this.getInfoDb();
         });
 
-        this.showNotification('top','center',4,this.message);        
+       this.showNotification('top','center','warning',this.message);       
    }
    
    update(id_phone){
@@ -135,21 +137,20 @@ export class PhoneComponent implements OnInit {
     this.subscription.unsubscribe();
   }
 
-  showNotification(from, align,color,msg){
-    const type = ['','info','success','warning','danger'];
-    console.log(msg);
-    // var color = col;//Math.floor((Math.random() * 4) + 1);
-    $.notify({
-        icon: "pe-7s-cloud-upload",
-        message: msg
-    },{
-        type: type[color],
-        timer: 1000,
-        placement: {
-            from: from,
-            align: align
-        }
-    });
-  }
+  showNotification(from, align,type_info,msg){
+       // const type = ['','info','success','warning','danger'];
+        console.log(msg);
+        $.notify({
+            icon: "pe-7s-cloud-upload",
+            message: msg
+        },{
+            type: type_info,
+            timer: 1000,
+            placement: {
+                from: from,
+                align: align
+            }
+        });
+    }
 
 }
