@@ -4,17 +4,17 @@
                 <div class="navbar-header">
                         <ul class="nav navbar-nav navbar-right">
                                 <li>
-                                    <a href="#">
+                                    <a *ngIf="myForm.get('_id').value!=null"[routerLink]="['deworm',myForm.get('_id').value]">
                                         <p>Deworm</p>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a *ngIf="myForm.get('_id').value!=null" href="#">
                                      <p>Vaccine</p>
                                     </a>
                                 </li>
                                 <li>
-                                  <a href="#">
+                                  <a *ngIf="myForm.get('_id').value!=null" href="#">
                                    <p>Microchip</p>
                                    </a>
                                     </li>

@@ -11,6 +11,9 @@ import {
 } from "@angular/forms";
 import { Observable } from "rxjs/Rx";
 
+declare var $:any;
+
+
 @Component({
     selector: 'app-animal',
     templateUrl: './animal.component.html',
@@ -21,6 +24,7 @@ export class AnimalComponent implements OnInit {
     public listAnimals;
     public listOwners;
     private animal;
+    private  message;
     myForm: FormGroup;
 
   headerRow = [
@@ -105,21 +109,27 @@ export class AnimalComponent implements OnInit {
             "an_vaccine": [],
             "an_microchip": []
         }
-        console.log("datos a guardar",  this.animal);
 let id= this.myForm.controls['_id'].value;
 if(id==null){
-    console.log("save", id);
+    this.message="Inserted Info";
     this.DbAnimalService.saveAnimals(this.animal).subscribe(data => {
-        console.log("SAVE DATA " + data);
+       // this.message=data;
+        console.log(data);
     });
+    
 }else{
+    this.message="Updated Info";
     console.log("update", id);
     this.DbAnimalService.updateAnimal(id,this.animal).subscribe(data => {
-        console.log("update DATA " + data);
+        //this.message=data;
+        console.log(data);
     });
 }
         this.myForm.reset();
+
+        this.showNotification('top','center',5,this.message);
         this.getInfoDb();
+     
     }
 
     update(id){
@@ -148,10 +158,13 @@ if(id==null){
     }
 
     delete(id){
+        this.message="Deleted Info";
         console.log("delete ", id);
         this.DbAnimalService.deleteAnimal(id).subscribe(data => {
             console.log("DELETE DATA " + data);
         });
+
+        this.showNotification('top','center',4,this.message);
         this.getInfoDb();
     }
     getInfoDb(){
@@ -171,5 +184,22 @@ if(id==null){
 
         console.log(this.listAnimals)
         console.log(this.listOwners)
+    }
+
+    showNotification(from, align,color,msg){
+        const type = ['','info','success','warning','danger'];
+  console.log(msg);
+       // var color = col;//Math.floor((Math.random() * 4) + 1);
+        $.notify({
+            icon: "pe-7s-cloud-upload",
+            message: msg
+        },{
+            type: type[color],
+            timer: 1000,
+            placement: {
+                from: from,
+                align: align
+            }
+        });
     }
 }

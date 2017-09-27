@@ -23,7 +23,6 @@ export class DbAnimalService {
 	}
 
 	updateAnimal(id, data){
-		console.log("id"+id);
 		return this.authHttp.put(this.baseUrl +"api/animal/" + id, data);
 	}
 
@@ -31,5 +30,23 @@ export class DbAnimalService {
 		return this.authHttp.get(this.baseUrl +"api/animal/"+id).map(res=> res.json());
    }
 
+    deleteDeworm(id,data){
+		console.log("Id Animal"+ id);
+		console.log("Info a Borrar",data)
+	return this.authHttp.delete(this.baseUrl +"api/animal/deworm/" + id, new RequestOptions({
+		body: data
+	 }));
+} 
+
+saveDeworm(id,data){
+	console.log("Id Animal"+ id)
+
+	return this.authHttp.post(this.baseUrl +"api/animal/deworm/"+id,data);
+} 
+
+updateDeworm(id,data){
+	console.log("Id Animal"+ id)
+	return this.authHttp.put(this.baseUrl +"api/animal/deworm/"+id,data);
+} 
 
 }

@@ -54,12 +54,13 @@ export class NavbarComponent implements OnInit{
     getTitle(){
       var titlee = this.location.prepareExternalUrl(this.location.path());
       titlee = titlee.split('/').pop();
+      //console.log("Titulo"+titlee)
       for(var item = 0; item < this.listTitles.length; item++){
           if(this.listTitles[item].path === titlee){
               return this.listTitles[item].title;
           }
       }
-      return 'Sacc';
+      return this.location.path().split('/')[2].charAt(0).toUpperCase()+ this.location.path().split('/')[2].substr(1).toLowerCase() ;
     }
 
 }
