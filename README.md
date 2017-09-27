@@ -51,20 +51,48 @@ The Veterinary Clinic System called SACC (Specialized animal care center) it is 
 </lu>
 
 # SPECIFICATIONS
-
-Using Angular/NodeJS/Express/MongoDB programming languages with object oriented concepts a new web system will be built
-The tools that we will use:
-Angular (FrontEnd)
-NodeJS/Express (BackEnd)
-MongoDB (Persistence)
-Github:
+<lu>
+<li>Using Angular/NodeJS/Express/MongoDB programming languages with object oriented concepts a new web system will be built</li>
+<li>The tools that we will use:</li>
+<li>Angular (FrontEnd)</li>
+<li>NodeJS/Express (BackEnd)</li>
+<li>MongoDB (Persistence)</li>
+<li>Github:
+<lu>
+<li>
 https://github.com/glomaga/SACC_AngularJS
-GitHub Pages:
+</li>
+</lu>
+</li>
+<li>GitHub Pages:
+<lu>
+<li>
 https://glomaga.github.io/SACC_AngularJS
-Heroku : 
+</li>
+</lu>
+</li>
+<li>Heroku : 
+<lu>
+<li>
 https://mwa-person-api.herokuapp.com/
+</li>
+<li>
 https://sacc-nodejs.herokuapp.com/
-MLab: 
+</li>
+</lu>
+</li>
+<li>MLab: 
+<lu>
+<li>
 mongo ds147884.mlab.com:47884/mwa
-JWT:
+</li>
+</lu>
+</li>
+<li>JWT:
+<lu>
+<li>
 edyluisrey.auth0.com
+</li>
+</lu>
+</li>
+</lu>
