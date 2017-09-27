@@ -56,9 +56,10 @@ The Veterinary Clinic System called SACC (Specialized animal care center) it is 
 </lu>
 
 # SPECIFICATIONS
+
+<div>Using Angular/NodeJS/Express/MongoDB programming languages with object oriented concepts a new web system will be built</div>
+<div>The tools that we will use:</div>
 <lu>
-<li>Using Angular/NodeJS/Express/MongoDB programming languages with object oriented concepts a new web system will be built</li>
-<li>The tools that we will use:</li>
 <li>Angular (FrontEnd)</li>
 <li>NodeJS/Express (BackEnd)</li>
 <li>MongoDB (Persistence)</li>
