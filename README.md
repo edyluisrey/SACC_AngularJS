@@ -31,9 +31,14 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 # INFO ABOUT PROJECT
 Project : SACC System
 25th September 2017
+<lu>
+<li>
 Gloria Gallego
+</li>
+<li>
 Edy Aguirre
-
+</li>
+</lu>
 # OVERVIEW
 The Veterinary Clinic System called SACC (Specialized animal care center) it is a veterinary care for domestic animals. Since its inception a paper-based system has been used by the owner. However with it’s growing demands it is necessary for a computerized system to be used in order to keep tracks of the pets as well as their medical history.
 # GOALS
