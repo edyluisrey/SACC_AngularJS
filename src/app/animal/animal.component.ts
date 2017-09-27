@@ -1,4 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+/*
+GLORIA GALLEGO
+MWA FINAL PROJECT
+27-09-2017
+*/
+
+
+
+
+import { Component, OnInit,OnChanges ,ChangeDetectorRef} from '@angular/core';
 import { DbAnimalService } from '../db/dbAnimal.service';
 import { AuthService } from '../auth/auth.service';
 import { PersonService } from '../db/person.service';
@@ -19,7 +28,7 @@ declare var $:any;
     templateUrl: './animal.component.html',
     styleUrls: ['./animal.component.scss']
 })
-export class AnimalComponent implements OnInit {
+export class AnimalComponent implements OnInit,OnChanges {
 
     public listAnimals;
     public listOwners;
@@ -36,6 +45,7 @@ export class AnimalComponent implements OnInit {
         'deceased',
         'Specie',
         'Breed',
+        'Owner',
         'Options'];
 
     genders = [
@@ -59,6 +69,7 @@ export class AnimalComponent implements OnInit {
     ];
 
     breed = [
+        'yorkshire terrier',
         'Affenpinscher',
         'Afghan Hound',
         'Airedale Terrier',
@@ -71,7 +82,12 @@ export class AnimalComponent implements OnInit {
 
 
 
-    constructor(private formBuilder: FormBuilder, private DbAnimalService: DbAnimalService, private personService: PersonService, private authService: AuthService) {
+    constructor(private formBuilder: FormBuilder, 
+        private DbAnimalService: DbAnimalService, 
+        private personService: PersonService, 
+        private authService: AuthService
+        //,private _cdRef: ChangeDetectorRef
+    ) {
         this.myForm = formBuilder.group({
             '_id': [],
             'an_name': ['', [Validators.required]],
@@ -127,11 +143,15 @@ if(id==null){
 }
         this.myForm.reset();
 
-        this.showNotification('top','center',5,this.message);
+        this.showNotification('top','center','success',this.message);
         this.getInfoDb();
-     
+   //   this._cdRef.detectChanges();
     }
 
+    ngOnChanges() {
+        this.getInfoDb();
+        }
+    
     update(id){
         console.log("udate ", id);
         this.DbAnimalService.getByIdAnimal(id).subscribe(data => {
@@ -164,7 +184,7 @@ if(id==null){
             console.log("DELETE DATA " + data);
         });
 
-        this.showNotification('top','center',4,this.message);
+        this.showNotification('top','center','warning',this.message);
         this.getInfoDb();
     }
     getInfoDb(){
@@ -186,15 +206,14 @@ if(id==null){
         console.log(this.listOwners)
     }
 
-    showNotification(from, align,color,msg){
-        const type = ['','info','success','warning','danger'];
+    showNotification(from, align,type_info,msg){
+       // const type = ['','info','success','warning','danger'];
   console.log(msg);
-       // var color = col;//Math.floor((Math.random() * 4) + 1);
         $.notify({
             icon: "pe-7s-cloud-upload",
             message: msg
         },{
-            type: type[color],
+            type: type_info,
             timer: 1000,
             placement: {
                 from: from,

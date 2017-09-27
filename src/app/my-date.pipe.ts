@@ -1,3 +1,10 @@
+/*
+GLORIA GALLEGO
+MWA FINAL PROJECT
+27-09-2017
+*/
+
+
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({

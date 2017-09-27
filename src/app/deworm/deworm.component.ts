@@ -1,3 +1,10 @@
+/*
+GLORIA GALLEGO
+MWA FINAL PROJECT
+27-09-2017
+*/
+
+
 import { Component, OnInit ,OnDestroy} from '@angular/core';
 import { DbAnimalService } from '../db/dbAnimal.service';
 import { AuthService } from '../auth/auth.service';
@@ -27,6 +34,7 @@ export class DewormComponent implements OnInit, OnDestroy {
   public listDoctors;
   private deworm;
   private  message;
+  private animal_name;
   myForm: FormGroup;
   private subscription: Subscription;
   private id: string;
@@ -57,16 +65,19 @@ export class DewormComponent implements OnInit, OnDestroy {
   this.subscription = activatedRoute.params.subscribe(
     (param: any) => { 
       this.id = param['id'];
+    });  
+    
+    this.personService.getDoctors().subscribe(data => {
+        this.listDoctors= data;
     });
 
     this.DbAnimalService.getByIdAnimal(this.id).subscribe(data => {
         console.log("get DATA " ,data);
         this.listDeworms= data.an_deworm;
+        this.animal_name = data.an_name;
     });
 
-    this.personService.getDoctors().subscribe(data => {
-        this.listDoctors= data;
-    });
+
    }
    onSubmit() {
 let id_deworm= this.myForm.controls['de_id'].value;
@@ -98,12 +109,14 @@ this.DbAnimalService.updateDeworm(this.id,this.deworm).subscribe(data => {
 }
     this.myForm.reset();
 
-    this.showNotification('top','center',5,this.message);
+    this.showNotification('top','center','success',this.message);
     this.getInfoDb();
  
 
    }
   ngOnInit() {
+
+
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();
@@ -120,7 +133,7 @@ this.DbAnimalService.updateDeworm(this.id,this.deworm).subscribe(data => {
             console.log("DELETE DATA " + data);
         });
 
-        this.showNotification('top','center',4,this.message);
+        this.showNotification('top','center','warning',this.message);
         this.getInfoDb();
     }
 
@@ -152,15 +165,13 @@ this.DbAnimalService.updateDeworm(this.id,this.deworm).subscribe(data => {
         });
     }
 
-  showNotification(from, align,color,msg){
-    const type = ['','info','success','warning','danger'];
+  showNotification(from, align,type_info,msg){
 console.log(msg);
-   // var color = col;//Math.floor((Math.random() * 4) + 1);
     $.notify({
         icon: "pe-7s-cloud-upload",
         message: msg
     },{
-        type: type[color],
+        type: type_info,
         timer: 1000,
         placement: {
             from: from,
@@ -168,4 +179,7 @@ console.log(msg);
         }
     });
 }
+
+
+
 }

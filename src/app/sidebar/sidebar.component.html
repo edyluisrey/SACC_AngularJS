@@ -1,18 +1,23 @@
 
 <div class="sidebar-wrapper">
     <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text">
+        <div  class="simple-text">
             <div class="logo-img">
-                <img src="/assets/img/angular2-logo-white.png"/>
+                <img src="/assets/img/SACC.png"/>
             </div>
             SACC
-        </a>
+        </div>
+        <div>Specialized Animal Care Center</div>
     </div>
     <ul class="nav responsive-nav">
         <li *ngIf="isMobileMenu()">
-            <a>
-                <p>Log out</p>
-            </a>
+
+                <a *ngIf="!authService.authenticated" (click)="authService.login()">
+                        <p>Log in</p>
+                    </a>
+                <a (click)=authService.logout() *ngIf="authService.authenticated">
+                        <p>Log out</p>
+                    </a>
         </li>
         <li class="separator hidden-lg hidden-md" *ngIf="isMobileMenu()"></li>
         <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}}">

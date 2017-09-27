@@ -7,17 +7,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#" >{{getTitle()}}</a>
+           <h2> {{getTitle()}}</h2>
         </div>
         <div class="collapse navbar-collapse">
    
             <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="#">
-                        <p>Account</p>
-                    </a>
-                </li>
-                
+    
                 <li>
                     <a *ngIf="!authService.authenticated" (click)="authService.login()">
                         <p>Log in</p>

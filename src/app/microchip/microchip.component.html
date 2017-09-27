@@ -1,0 +1,104 @@
+
+<div class="main-content">
+  <div class="container-fluid">
+  <div class="row">
+        <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                            <h4 class="title">Animal: {{animal_name}}</h4>
+                    </div>
+                    <div class="content">
+                            <form  [formGroup]="myForm" (ngSubmit)="onSubmit()">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                            <input   type="hidden" class="form-control" id="mr_id" formControlName="mr_id"/>
+                                        <label for="mr_date">Date</label>
+                                        <input type="date" class="form-control" id="mr_date" formControlName="mr_date"/>
+  
+                                    </div>
+                                    <span class="alert alert-danger" *ngIf="!myForm.controls['mr_date'].valid"> Required</span>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                            <label for="mr_description">Description</label>
+                                        <input type="text" class="form-control" id="mr_description" placeholder="Enter description" formControlName="mr_description"/>
+                                    </div>
+                                    <span class="alert alert-danger" *ngIf="!myForm.controls['mr_description'].valid"> Required</span>
+                                </div>
+                                <div class="col-md-4">
+                                        <div class="form-group">
+                                                <label for="mr_brand">Brand</label>
+                                            <input type="text" class="form-control" id="mr_brand" placeholder="Enter brand" formControlName="mr_brand"/>
+                                        </div>
+                                        <span class="alert alert-danger" *ngIf="!myForm.controls['mr_brand'].valid"> Required</span>
+                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                            <label  class="label" for="mr_implantsite">Implant Site</label> 
+                                            <select class="form-control" formControlName="mr_implantsite" id="mr_implantsite" name="mr_implantsite">
+                                                    <option *ngFor='let s of implantsite' [value]="s">
+                                                            {{s}}
+                                                    </option>
+                                     </select>
+                                    </div>
+                                </div>
+                                  <div class="col-md-4">
+                                      <label for="mr_doctor">Doctor</label>
+                                    <select class="form-control" formControlName="mr_doctor" id="mr_doctor" name="mr_doctor">
+                                            <option *ngFor='let doctor of listDoctors' [value]="doctor._id">
+                                                    {{doctor.pr_title + " " + doctor.pr_lastname + " " + doctor.pr_firstname}}
+                                                </option>
+                                   </select>
+                                  </div>
+                          </div>
+                            <button type="submit" [disabled]="!myForm.valid" class="btn btn-info btn-fill pull-right">Save</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+  </div>
+  </div>
+  <div class="container-fluid">
+  <div class="row">
+      <div class="col-md-12">
+          <div class="card">
+              <div class="header">
+                  <h4 class="title">Microchip List</h4>
+                  <!-- <p class="category">Here is a subtitle for this table</p> -->
+              </div>
+              <div class="content table-responsive table-full-width">
+                    <table class="table table-hover table-striped">
+                          <thead>
+                              <tr>
+                                  <th *ngFor="let cell of headerRow">{{ cell }}</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let row of listMicrochips">  
+                                    <td>{{row.mr_description| lowercase}}</td>
+                                    <td>{{row.mr_date| myDate}}</td> 
+                                    <td>{{row.mr_implantsite| lowercase}}</td>
+                                    <td>{{row.mr_brand| lowercase}}</td>
+                                    <td> {{row.mr_doctor| mySearch:listDoctors}}</td> 
+                                   
+                                   <td>
+                                        <!-- <button type="button" class="btn btn-default" (click)="edit(row._id)">Get Data</button> -->
+                                 
+                                            <a (click)="update(row.mr_id)">  <i class="pe-7s-pen"></i></a>
+                                            <a (click)="delete(row.mr_id)">  <i class="pe-7s-scissors"></i> </a>
+                                    </td> 
+                              </tr>
+                          </tbody>
+                    </table>
+  
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>
+  </div>
+  

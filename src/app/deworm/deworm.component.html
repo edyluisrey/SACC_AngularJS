@@ -5,7 +5,7 @@
       <div class="col-md-12">
               <div class="card">
                   <div class="header">
-                      <h4 class="title">Deworm</h4>
+                      <h4 class="title">Animal: {{animal_name}}</h4>
                   </div>
                   <div class="content">
                           <form  [formGroup]="myForm" (ngSubmit)="onSubmit()">
@@ -30,7 +30,7 @@
                                   <label for="de_doctor">Doctor</label>
                                 <select class="form-control" formControlName="de_doctor" id="de_doctor" name="de_doctor">
                                         <option *ngFor='let doctor of listDoctors' [value]="doctor._id">
-                                                {{doctor.pr_lastname + " " + doctor.pr_firstname}}
+                                                {{doctor.pr_title + " " + doctor.pr_lastname + " " + doctor.pr_firstname}}
                                         </option>
                                </select>
                               </div>
@@ -49,7 +49,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="header">
-                <h4 class="title">List of Deworm</h4>
+                <h4 class="title">Deworm List</h4>
                 <!-- <p class="category">Here is a subtitle for this table</p> -->
             </div>
             <div class="content table-responsive table-full-width">
@@ -63,7 +63,7 @@
                             <tr *ngFor="let row of listDeworms">  
                                   <td>{{row.de_name| lowercase}}</td>
                                   <td>{{row.de_date| myDate}}</td> 
-                                  <td> {{row.de_doctor}}</td> 
+                                  <td>{{row.de_doctor| mySearch:listDoctors }}</td> 
                                  
                                  <td>
                                       <!-- <button type="button" class="btn btn-default" (click)="edit(row._id)">Get Data</button> -->

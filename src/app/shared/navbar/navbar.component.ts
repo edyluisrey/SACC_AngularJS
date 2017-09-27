@@ -60,7 +60,16 @@ export class NavbarComponent implements OnInit{
               return this.listTitles[item].title;
           }
       }
-      return this.location.path().split('/')[2].charAt(0).toUpperCase()+ this.location.path().split('/')[2].substr(1).toLowerCase() ;
-    }
+      let temp=this.location.path().split('/');
+      
+      if(temp.length<=2){
+          
+            return "SACC";
+      }else{
+
+        return this.location.path().split('/')[2].charAt(0).toUpperCase()+ this.location.path().split('/')[2].substr(1).toLowerCase() ;
+
+        }
+        }
 
 }

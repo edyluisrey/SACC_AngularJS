@@ -9,12 +9,12 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a *ngIf="myForm.get('_id').value!=null" href="#">
+                                    <a *ngIf="myForm.get('_id').value!=null" [routerLink]="['vaccine',myForm.get('_id').value]">
                                      <p>Vaccine</p>
                                     </a>
                                 </li>
                                 <li>
-                                  <a *ngIf="myForm.get('_id').value!=null" href="#">
+                                  <a *ngIf="myForm.get('_id').value!=null" [routerLink]="['microchip',myForm.get('_id').value]">
                                    <p>Microchip</p>
                                    </a>
                                     </li>
@@ -164,6 +164,7 @@
                                         <td>{{row.an_deceased| myDate}}</td> 
                                         <td>{{row.an_specie}}</td> 
                                         <td>{{row.an_breed}}</td> 
+                                        <td>{{row.an_owner| mySearch:listOwners}}</td> 
                                        <td>
                                             <!-- <button type="button" class="btn btn-default" (click)="edit(row._id)">Get Data</button> -->
                                      
