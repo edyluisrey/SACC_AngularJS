@@ -14,6 +14,7 @@
                                         <label>Company (disabled)</label>
                                         <input type="text" class="form-control" disabled placeholder="Company" value="Creative Code Inc.">
                                     </div>
+                                    <span class="alert alert-danger" *ngIf="!myForm.controls['an_owner'].valid"> Required</span>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">

@@ -1,48 +1,168 @@
+
+<nav class="navbar navbar-default">
+        <div class="container-fluid">
+                <div class="navbar-header">
+                        <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    <a href="#">
+                                        <p>Deworm</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                     <p>Vaccine</p>
+                                    </a>
+                                </li>
+                                <li>
+                                  <a href="#">
+                                   <p>Microchip</p>
+                                   </a>
+                                    </li>
+                                <li class="separator hidden-lg hidden-md"></li>
+                            </ul>
+                    </div>
+                </div>
+    </nav>    
 <div class="main-content">
+     <div class="container-fluid">
+      <div class="row">
+            <div class="col-md-12">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">Animal</h4>
+                        </div>
+                        <div class="content">
+                                <form  [formGroup]="myForm" (ngSubmit)="onSubmit()">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="an_owner">Owner</label>
+                                            <select class="form-control" formControlName="an_owner" id="an_owner" name="an_owner">
+                                                    <option *ngFor='let owner of listOwners' [value]="owner._id">
+                                                            {{owner.pr_lastname + " " + owner.pr_firstname}}
+                                                    </option>
+                                     </select>
+
+                                        </div>
+                                        <span class="alert alert-danger" *ngIf="!myForm.controls['an_owner'].valid"> Required</span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                                <label for="an_name">Name</label>
+                                            <input type="text" class="form-control" id="an_name" placeholder="Enter name" formControlName="an_name"/>
+                                        </div>
+                                        <span class="alert alert-danger" *ngIf="!myForm.controls['an_name'].valid"> Required</span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                                <label  for="an_birth">Birth</label>
+                                                <input type="date" class="form-control" id="an_birth" formControlName="an_birth"/>
+                                        </div>
+                                        <span class="alert alert-danger" *ngIf="!myForm.controls['an_birth'].valid"> Required</span>
+                                    </div>
+                                </div>
+    
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                           <label  for="an_color">Color</label>
+                                            <input type="color" class="form-control" id="an_color" formControlName="an_color">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label  for="an_gender">Gender</label> 
+                                            <div  *ngFor="let g of genders">
+                                                    <label >
+                                                        <input type="radio"
+                                                                formControlName="an_gender"
+                                                                [value]="g">
+                                                        {{g}}
+                                                    </label>
+                                                </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label  for="an_gender">Neutered</label> 
+                                                <div  *ngFor="let n of neutered">
+                                                        <label>
+                                                            <input type="radio"
+                                                                    formControlName="an_neutered"
+                                                                    [value]="n">
+                                                            {{n}}
+                                                        </label>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                </div>
+    
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                                <label  class="label" for="an_specie">Specie</label> 
+                                                <select class="form-control" formControlName="an_specie" id="an_specie" name="an_specie">
+                                                        <option *ngFor='let s of specie' [value]="s">
+                                                                {{s}}
+                                                        </option>
+                                         </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                                <label  class="label" for="an_breed">Breed</label> 
+                                                <select class="form-control" formControlName="an_breed" id="an_breed" name="an_breed">
+                                                        <option *ngFor='let b of breed' [value]="b">
+                                                                {{b}}
+                                                        </option>
+                                                    </select>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+    
+                                <button type="submit" [disabled]="!myForm.valid" class="btn btn-info btn-fill pull-right">Save</button>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+      </div>
+  </div>
   <div class="container-fluid">
       <div class="row">
           <div class="col-md-12">
               <div class="card">
                   <div class="header">
-                      <h4 class="title">Striped Table with Hover</h4>
-                      <p class="category">Here is a subtitle for this table</p>
+                      <h4 class="title">List of Animals</h4>
+                      <!-- <p class="category">Here is a subtitle for this table</p> -->
                   </div>
                   <div class="content table-responsive table-full-width">
                         <table class="table table-hover table-striped">
                               <thead>
                                   <tr>
-                                      <th *ngFor="let cell of tableData1.headerRow">{{ cell }}</th>
+                                      <th *ngFor="let cell of headerRow">{{ cell }}</th>
                                   </tr>
                               </thead>
                               <tbody>
-                                  <tr *ngFor="let row of tableData1.dataRows">
-                                      <td *ngFor="let cell of row">{{cell}}</td>
+                                  <tr *ngFor="let row of listAnimals">
+                                        <td>{{row.an_name}}</td> 
+                                        <td>{{row.an_gender| lowercase}}</td> 
+                                        <td>{{row.an_neutered}}</td> 
+                                        <td>{{row.an_birth| date:"MM/dd/yy"}}</td> 
+                                        <td>{{row.an_color}}</td> 
+                                        <td>{{row.an_deceased}}</td> 
+                                        <td>{{row.an_specie}}</td> 
+                                        <td>{{row.an_breed}}</td> 
+                                       <td>
+                                                <a [routerLink]="[animal]">  <i class="pe-7s-pen"></i></a>
+                                                <a [routerLink]="[animal]">  <i class="pe-7s-delete-user"></i> </a>
+                                        </td> 
                                   </tr>
                               </tbody>
                         </table>
 
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-12">
-              <div class="card card-plain">
-                  <div class="header">
-                      <h4 class="title">Table on Plain Background</h4>
-                      <p class="category">Here is a subtitle for this table</p>
-                  </div>
-                  <div class="content table-responsive table-full-width">
-                      <table class="table table-hover">
-                          <thead>
-                              <tr>
-                                  <th *ngFor="let cell of tableData2.headerRow">{{ cell }}</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              <tr *ngFor="let row of tableData2.dataRows">
-                                  <td *ngFor="let cell of row">{{cell}}</td>
-                              </tr>
-                          </tbody>
-                      </table>
                   </div>
               </div>
           </div>

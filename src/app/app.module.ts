@@ -13,12 +13,14 @@ import { AppComponent } from './app.component';
 
 import { UserComponent } from './user/user.component';
 import { AnimalComponent } from './animal/animal.component';
+import { DewormComponent } from './deworm/deworm.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
-    AnimalComponent
+    AnimalComponent,
+    DewormComponent
 
 
   ],
