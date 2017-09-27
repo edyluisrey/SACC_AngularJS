@@ -25,9 +25,13 @@ import { AuthConfig, AuthHttp } from 'angular2-jwt';
 import { MiddleService } from './Mid.service';
 import { HomeComponent } from './home/home.component';
 import { MyDatePipe } from './my-date.pipe';
+
 import { VaccineComponent } from './vaccine/vaccine.component';
 import { MicrochipComponent } from './microchip/microchip.component';
 import { MySearchPipe } from './my-search.pipe';
+import { LocationComponent } from './location/location.component';
+import { PhoneComponent } from './phone/phone.component';
+import { EmailComponent } from './email/email.component';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
@@ -47,7 +51,10 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     MyDatePipe,
     VaccineComponent,
     MicrochipComponent,
-    MySearchPipe
+    MySearchPipe,
+    LocationComponent,
+    PhoneComponent,
+    EmailComponent
   ],
   imports: [
     BrowserModule,

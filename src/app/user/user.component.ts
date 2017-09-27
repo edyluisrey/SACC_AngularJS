@@ -10,6 +10,7 @@ import {
 } from "@angular/forms";
 import { Observable } from "rxjs/Rx";
 import 'rxjs/add/operator/map';
+declare var $:any;
 
 @Component({
   selector: 'app-user',
@@ -26,7 +27,7 @@ export class UserComponent implements OnInit {
   headerRow = ['First name','Last name','Title','Gender',
             'Status','Create date','Types', 'Options']; 
   private person; 
-
+  private  message;
   constructor(private personService: PersonService, private authService: AuthService, private formBuilder: FormBuilder) { 
         this.myForm = formBuilder.group({
             '_id': [], 
@@ -37,8 +38,8 @@ export class UserComponent implements OnInit {
             'pr_status': ['', [Validators.required]],
             'pr_createdate': [''],
             'pr_types': [''],
-            'Doctor': [true],
-            'Owner': [true]
+            'Doctor': ['',[Validators.required]],
+            'Owner': ['', [Validators.required]]
         });
 
         this.myForm.statusChanges.subscribe(
@@ -49,9 +50,9 @@ export class UserComponent implements OnInit {
   onSubmit() {
         console.log(this.myForm);
         let types:string[] =[];
-        if(this.myForm.controls['Doctor'].value)
+        if(this.myForm.controls['Doctor'].value=="Yes")
             types.push("Doctor");
-        if(this.myForm.controls['Owner'].value)
+        if(this.myForm.controls['Owner'].value=="Yes")
             types.push("Owner"); 
              
         this.person = {
@@ -70,32 +71,35 @@ export class UserComponent implements OnInit {
         console.log("datos a guardar",  this.person);
         let id= this.myForm.controls['_id'].value;
         if(id==null){
+            this.message="Inserted Info";
             console.log("save", id);
             this.personService.createPerson(this.person).subscribe(data => {
                 console.log("SAVE DATA " + data);
+                this.getInfoDb();
             });
         }else{
+            this.message="Updated Info";
             console.log("update", id);
             this.personService.updatePerson(id,this.person).subscribe(data => {
                 console.log("update:" + data);
+                this.getInfoDb();
             });
         }
         this.myForm.reset();
-        this.getInfoDb();
-
+        this.showNotification('top','center',5,this.message);
   }
   
   update(id){
         console.log("udate ", id);
         this.personService.getPersonById(id).subscribe(data => {
             console.log(data);
-            let doc =false;
-            let own= false;
+            let doc ="No";
+            let own= "No";
             if(data.pr_types.indexOf("Doctor") > -1){
-              doc= true;
+              doc= "Yes";
             }
             if(data.pr_types.indexOf("Owner") > -1){
-              own= true;
+              own= "Yes";
             }
             this.myForm.patchValue({
                 _id: data._id,
@@ -116,8 +120,8 @@ export class UserComponent implements OnInit {
         console.log("delete ", id);
         this.personService.deletePerson(id).subscribe(data => {
             console.log("delete:" + data);
-        });
-        this.getInfoDb();
+            this.getInfoDb();
+        });        
   }
 
   getInfoDb(){
@@ -130,5 +134,29 @@ export class UserComponent implements OnInit {
   ngOnInit() {  console.log("data inti");
        this.getInfoDb()       
   }
+     
+  doctorValidator(control: FormControl): {[s: string]: boolean} {
+    if (control.value === false) {
+      return {example: true};
+    }
+    return null;
+  }
+
+  showNotification(from, align,color,msg){
+        const type = ['','info','success','warning','danger'];
+        console.log(msg);
+       // var color = col;//Math.floor((Math.random() * 4) + 1);
+        $.notify({
+            icon: "pe-7s-cloud-upload",
+            message: msg
+        },{
+            type: type[color],
+            timer: 1000,
+            placement: {
+                from: from,
+                align: align
+            }
+        });
+    }
  
 }

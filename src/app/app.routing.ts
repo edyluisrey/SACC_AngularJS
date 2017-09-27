@@ -24,6 +24,9 @@ import { MicrochipComponent } from './microchip/microchip.component';
 const routes: Routes =[
   { path: 'home', component: HomeComponent  },
     { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
+    { path: 'user/location/:id',  component: LocationComponent ,canActivate: [AuthGuard] },
+    { path: 'user/phone/:id',  component: PhoneComponent ,canActivate: [AuthGuard] },
+    { path: 'user/email/:id',  component: EmailComponent ,canActivate: [AuthGuard] },
     { path: 'animal',  component: AnimalComponent ,canActivate: [AuthGuard] },
     { path: 'animal/deworm/:id',  component: DewormComponent ,canActivate: [AuthGuard] },
     { path: 'animal/vaccine/:id',  component: VaccineComponent ,canActivate: [AuthGuard] },
