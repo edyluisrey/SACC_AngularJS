@@ -36,6 +36,7 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
+                                                <input   type="hidden" class="form-control" id="_id" formControlName="_id"/>
                                             <label for="an_owner">Owner</label>
                                             <select class="form-control" formControlName="an_owner" id="an_owner" name="an_owner">
                                                     <option *ngFor='let owner of listOwners' [value]="owner._id">
@@ -121,7 +122,15 @@
                                     </div>
                                     
                                 </div>
-    
+                                <div class="row">
+                                        <div class="col-md-4">
+                                                <div class="form-group">
+                                                        <label  for="an_deceased">deceased</label>
+                                                        <input type="date" class="form-control" id="an_deceased" formControlName="an_deceased"/>
+                                                </div>
+                                                <span class="alert alert-danger" *ngIf="!myForm.controls['an_deceased'].valid"> Required</span>
+                                            </div>
+                                    </div>
                                 <button type="submit" [disabled]="!myForm.valid" class="btn btn-info btn-fill pull-right">Save</button>
                                 <div class="clearfix"></div>
                             </form>
@@ -150,14 +159,16 @@
                                         <td>{{row.an_name| lowercase}}</td> 
                                         <td>{{row.an_gender| lowercase}}</td> 
                                         <td>{{row.an_neutered}}</td> 
-                                        <td>{{row.an_birth| date:"MM/dd/yy"}}</td> 
+                                        <td>{{row.an_birth| myDate}}</td> 
                                         <td>{{row.an_color}}</td> 
-                                        <td>{{row.an_deceased}}</td> 
+                                        <td>{{row.an_deceased| myDate}}</td> 
                                         <td>{{row.an_specie}}</td> 
                                         <td>{{row.an_breed}}</td> 
                                        <td>
-                                                <a [routerLink]="[animal]">  <i class="pe-7s-pen"></i></a>
-                                                <a [routerLink]="[animal]">  <i class="pe-7s-delete-user"></i> </a>
+                                            <!-- <button type="button" class="btn btn-default" (click)="edit(row._id)">Get Data</button> -->
+                                     
+                                                <a (click)="update(row._id)">  <i class="pe-7s-pen"></i></a>
+                                                <a (click)="delete(row._id)">  <i class="pe-7s-scissors"></i> </a>
                                         </td> 
                                   </tr>
                               </tbody>
