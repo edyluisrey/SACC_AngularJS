@@ -147,7 +147,7 @@
                               </thead>
                               <tbody>
                                   <tr *ngFor="let row of listAnimals">
-                                        <td>{{row.an_name}}</td> 
+                                        <td>{{row.an_name| lowercase}}</td> 
                                         <td>{{row.an_gender| lowercase}}</td> 
                                         <td>{{row.an_neutered}}</td> 
                                         <td>{{row.an_birth| date:"MM/dd/yy"}}</td> 

@@ -7,10 +7,17 @@ import { AuthService } from '../auth/auth.service';
 
 @Injectable()
 export class PersonService {
-	baseUrl: string = "http://localhost:3000/api";
+	baseUrl: string = "https://mwa-person-api.herokuapp.com/";
 	constructor(private http: Http, private authHttp: AuthHttp) { }
 
 	getPerson(){
          return this.authHttp.get("https://mwa-person-api.herokuapp.com/api/persons");
-    }
+	}
+	getDoctors(){
+		return this.authHttp.get(this.baseUrl +"api/persons/doctors").map(res=> res.json());
+   }
+   getOwners(){
+	return this.authHttp.get(this.baseUrl +"api/persons/owners").map(res=> res.json());
+}
+
 }
