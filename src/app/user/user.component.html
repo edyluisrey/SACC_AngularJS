@@ -1,27 +1,28 @@
+
 <nav class="navbar navbar-default">
-<div class="container-fluid">
-    <div class="navbar-header">
-          <ul class="nav navbar-nav navbar-right">
-                  <li>
-                      <a href="#">
-                          <p>Location</p>
-                      </a>
-                  </li>
-                  <li>
-                      <a href="#">
-                       <p>Phone</p>
-                      </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                     <p>Email</p>
-                     </a>
-                      </li>
-                  <li class="separator hidden-lg hidden-md"></li>
-          </ul>
-    </div>
-  </div>
-</nav>    
+        <div class="container-fluid">
+            <div class="navbar-header">
+                    <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a *ngIf="myForm.get('_id').value!=null"[routerLink]="['location',myForm.get('_id').value]">
+                                    <p>Location</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a *ngIf="myForm.get('_id').value!=null" [routerLink]="['phone',myForm.get('_id').value]">
+                                 <p>Phone</p>
+                                </a>
+                            </li>
+                            <li>
+                              <a *ngIf="myForm.get('_id').value!=null" [routerLink]="['email',myForm.get('_id').value]">
+                               <p>Email</p>
+                               </a>
+                                </li>
+                            <li class="separator hidden-lg hidden-md"></li>
+                        </ul>
+                </div>
+            </div>
+</nav>     
 <div class="main-content">
    <div class="container-fluid">
     <div class="row">
@@ -85,7 +86,7 @@
                   </div>                      
                   </div>
               </div>
-              <div class="col-md-4">
+              <!--<div class="col-md-4">
                   <div class="form-group">
                       <label for="pr_types">Types</label> 
                         <div  *ngFor="let tp of types">
@@ -96,6 +97,29 @@
                                         {{tp}}
                                 </label>
                         </div>
+                  </div>
+              </div>-->
+              <div class="col-md-4">
+                  <div class="form-group">
+                  <label  for="Doctor">Doctor</label> 
+                  <div  *ngFor="let sts of status">
+                        <label >
+                          <input type="radio"
+                              formControlName="Doctor" [value]="sts"> {{ sts}}
+                        </label>
+                  </div>                      
+                  </div>
+              </div>
+
+              <div class="col-md-4">
+                  <div class="form-group">
+                  <label  for="Owner">Owner</label> 
+                  <div  *ngFor="let sts of status">
+                        <label >
+                          <input type="radio"
+                              formControlName="Owner" [value]="sts"> {{ sts}}
+                        </label>
+                  </div>                      
                   </div>
               </div>
             </div>

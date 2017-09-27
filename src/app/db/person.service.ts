@@ -39,9 +39,42 @@ export class PersonService {
     }
 
     //Locations
+    createLocation(id,data){
+		return this.authHttp.put(this.baseUrl +"api/addlocation/"+id,data);
+    }   
 
+    updateLocation(id,data){
+		return this.authHttp.put(this.baseUrl +"api/updatelocation/"+id,data);
+    } 
+
+    deleteLocation(id,data){
+		return this.authHttp.put(this.baseUrl +"api/removelocation/"+id,data);
+    } 
+    
     //Phones
+    createPhone(id,data){
+		return this.authHttp.put(this.baseUrl +"api/addphone/"+id,data);
+    }   
 
+    updatePhone(id,data){
+		return this.authHttp.put(this.baseUrl +"api/updatephone/"+id,data);
+    } 
+
+    deletePhone(id,data){
+		return this.authHttp.put(this.baseUrl +"api/removephone/"+id,data);
+    } 
+    
     //Emails
+    createEmail(id,data){
+		return this.authHttp.put(this.baseUrl +"api/addemail/"+id,data);
+    }   
+
+    updateEmail(id,data){
+		return this.authHttp.put(this.baseUrl +"api/updateemail/"+id,data);
+    } 
+
+    deleteEmail(id,data){
+		return this.authHttp.put(this.baseUrl +"api/removeemail/"+id,data);
+    }  
 
 }
