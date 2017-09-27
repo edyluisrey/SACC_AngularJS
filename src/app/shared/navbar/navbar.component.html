@@ -18,12 +18,12 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a *ngIf="!authService.authenticated" (click)="authService.login()">
                         <p>Log in</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a (click)=authService.logout() *ngIf="authService.authenticated">
                         <p>Log out</p>
                     </a>
                 </li>
