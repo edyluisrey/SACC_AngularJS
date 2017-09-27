@@ -105,6 +105,7 @@ export class MicrochipComponent  implements OnInit, OnDestroy {
     this.DbAnimalService.saveMicrochip(this.id,this.microchip).subscribe(data => {
        // this.message=data;
         console.log(data);
+        this.getInfoDb();
     });
     
     }else{
@@ -121,12 +122,14 @@ export class MicrochipComponent  implements OnInit, OnDestroy {
     this.DbAnimalService.updateMicrochip(this.id,this.microchip).subscribe(data => {
         //this.message=data;
         console.log(data);
+        this.getInfoDb();
+        
     });
     }
         this.myForm.reset();
     
         this.showNotification('top','center','success',this.message);
-        this.getInfoDb();
+
 
        }
 
@@ -138,10 +141,11 @@ export class MicrochipComponent  implements OnInit, OnDestroy {
         }
         this.DbAnimalService.deleteMicrochip(this.id,this.microchip).subscribe(data => {
             console.log("DELETE DATA " + data);
+            this.getInfoDb();
         });
 
         this.showNotification('top','center','warning',this.message);
-        this.getInfoDb();
+
     }
 
     update(id_mr){

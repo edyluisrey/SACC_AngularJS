@@ -91,6 +91,7 @@ this.message="Inserted Info";
 this.DbAnimalService.saveDeworm(this.id,this.deworm).subscribe(data => {
    // this.message=data;
     console.log(data);
+    this.getInfoDb();
 });
 
 }else{
@@ -105,14 +106,11 @@ console.log("update", id_deworm);
 this.DbAnimalService.updateDeworm(this.id,this.deworm).subscribe(data => {
     //this.message=data;
     console.log(data);
+    this.getInfoDb();
 });
 }
     this.myForm.reset();
-
     this.showNotification('top','center','success',this.message);
-    this.getInfoDb();
- 
-
    }
   ngOnInit() {
 
@@ -131,10 +129,11 @@ this.DbAnimalService.updateDeworm(this.id,this.deworm).subscribe(data => {
         }
         this.DbAnimalService.deleteDeworm(this.id,this.deworm).subscribe(data => {
             console.log("DELETE DATA " + data);
+            this.getInfoDb();
         });
 
         this.showNotification('top','center','warning',this.message);
-        this.getInfoDb();
+
     }
 
     update(id_deworm){

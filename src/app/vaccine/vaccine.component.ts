@@ -100,6 +100,7 @@ export class VaccineComponent implements OnInit, OnDestroy {
     this.DbAnimalService.saveVaccine(this.id,this.vaccine).subscribe(data => {
        // this.message=data;
         console.log(data);
+        this.getInfoDb();
     });
     
     }else{
@@ -116,12 +117,13 @@ export class VaccineComponent implements OnInit, OnDestroy {
     this.DbAnimalService.updateVaccine(this.id,this.vaccine).subscribe(data => {
         //this.message=data;
         console.log(data);
+        this.getInfoDb();
     });
     }
         this.myForm.reset();
     
         this.showNotification('top','center','success',this.message);
-        this.getInfoDb();
+
      
     
        }
@@ -179,10 +181,11 @@ export class VaccineComponent implements OnInit, OnDestroy {
       }
       this.DbAnimalService.deleteVaccine(this.id,this.vaccine).subscribe(data => {
           console.log("DELETE DATA " + data);
+          this.getInfoDb();
       });
   
       this.showNotification('top','center','warning',this.message);
-      this.getInfoDb();
+
   }  
 
 }

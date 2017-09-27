@@ -28,7 +28,7 @@ declare var $:any;
     templateUrl: './animal.component.html',
     styleUrls: ['./animal.component.scss']
 })
-export class AnimalComponent implements OnInit,OnChanges {
+export class AnimalComponent implements OnInit {
 
     public listAnimals;
     public listOwners;
@@ -131,6 +131,7 @@ if(id==null){
     this.DbAnimalService.saveAnimals(this.animal).subscribe(data => {
        // this.message=data;
         console.log(data);
+        this.getInfoDb();
     });
     
 }else{
@@ -139,18 +140,16 @@ if(id==null){
     this.DbAnimalService.updateAnimal(id,this.animal).subscribe(data => {
         //this.message=data;
         console.log(data);
+        this.getInfoDb();
     });
 }
         this.myForm.reset();
 
         this.showNotification('top','center','success',this.message);
-        this.getInfoDb();
+
    //   this._cdRef.detectChanges();
     }
 
-    ngOnChanges() {
-        this.getInfoDb();
-        }
     
     update(id){
         console.log("udate ", id);
@@ -182,10 +181,11 @@ if(id==null){
         console.log("delete ", id);
         this.DbAnimalService.deleteAnimal(id).subscribe(data => {
             console.log("DELETE DATA " + data);
+            this.getInfoDb();
         });
 
         this.showNotification('top','center','warning',this.message);
-        this.getInfoDb();
+
     }
     getInfoDb(){
         this.DbAnimalService.getAnimals().subscribe(data => {
