@@ -45,7 +45,6 @@ The Veterinary Clinic System called SACC (Specialized animal care center) it is 
 # GOALS
 <lu>
 <li>The system need to have the principal data information for the Animal.</li>
-<li>The system need to be able to create different type of species of animals and breed.</li>
 <li>The system need to have the principal data information for the Owner.</li>
 <li>The system need to have the principal data information for the Doctors.</li>
 <li>The system need to have multiple contact location for the animal’s owner and Doctors.</li>
