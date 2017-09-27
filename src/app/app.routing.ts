@@ -20,6 +20,9 @@ import { HomeComponent } from './home/home.component';
 import { DewormComponent } from './deworm/deworm.component';
 import { VaccineComponent } from './vaccine/vaccine.component';
 import { MicrochipComponent } from './microchip/microchip.component';
+import { LocationComponent } from './location/location.component';
+import { PhoneComponent } from './phone/phone.component';
+import { EmailComponent } from './email/email.component';
 
 const routes: Routes =[
   { path: 'home', component: HomeComponent  },
